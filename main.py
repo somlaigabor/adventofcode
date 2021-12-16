@@ -1,9 +1,9 @@
 
-# Advent of code day 2, first half
+# Advent of code day 2, second half
 
 horizontal_position = 0
 depth = 0
-
+depth_aim = 0
 
 def slicing(data):
     direction = data[:-3]
@@ -16,13 +16,12 @@ for line in f:
     move = slicing(line)
     if move['direction'] == 'forward':
         horizontal_position += move['num']
+        depth += depth_aim*move['num']
     
     if move['direction'] == 'down':
-        depth += move['num']
+        depth_aim += move['num']
 
     if move['direction'] == 'up':
-        depth -= move['num']
-        
-    dd = 2
+        depth_aim -= move['num']
 
 print(horizontal_position*depth)
